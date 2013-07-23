@@ -34,7 +34,6 @@ make
 man-db
 man-pages
 nano
-netctl
 openssh
 p7zip
 pacman
