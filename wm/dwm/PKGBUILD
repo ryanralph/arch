@@ -1,0 +1,31 @@
+pkgname=dwm
+pkgver=6.0
+pkgrel=1
+pkgdesc='A dynamic window manager for X'
+
+arch=('i686' 'x86_64')
+depends=('libx11' 'libxinerama')
+license=('MIT')
+options=(zipman)
+source=(http://dl.suckless.org/dwm/$pkgname-$pkgver.tar.gz config.h dwm.desktop)
+url='http://dwm.suckless.org'
+
+build() {
+	cp $srcdir/config.h $srcdir/$pkgname-$pkgver
+	cp $srcdir/dwm.desktop $srcdir/$pkgname-$pkgver
+	cd $srcdir/$pkgname-$pkgver
+	sed -i 's/CPPFLAGS =/CPPFLAGS +=/g' config.mk
+	sed -i 's/^CFLAGS = -g/#CFLAGS += -g/g' config.mk
+	sed -i 's/^#CFLAGS = -std/CFLAGS += -std/g' config.mk
+	sed -i 's/^LDFLAGS = -g/#LDFLAGS += -g/g' config.mk
+	sed -i 's/^#LDFLAGS = -s/LDFLAGS += -s/g' config.mk
+	make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
+}
+
+package() {
+	cd $srcdir/$pkgname-$pkgver
+	make PREFIX=/usr DESTDIR=$pkgdir install
+	install -m644 -D LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+	install -m644 -D README $pkgdir/usr/share/doc/$pkgname/README
+	install -m644 -D dwm.desktop $pkgdir/usr/share/xsessions/dwm.desktop
+}

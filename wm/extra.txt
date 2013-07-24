@@ -1,0 +1,4 @@
+feh
+google-chrome
+vlc
+xclip 
