@@ -44,6 +44,9 @@ function do_services() {
 	systemctl enable iptables.service
 	systemctl enable ip6tables.service
 
+	systemctl start iptables.service
+	systemctl start ip6tables.service
+
 	chmod 700 /etc/systemd/
 }
 
@@ -53,7 +56,7 @@ function update_mirrorlist() {
 
 do_locale
 update_mirrorlist
-do_iptables
 do_ntp
+do_iptables
 do_services
 create_nonroot_user
