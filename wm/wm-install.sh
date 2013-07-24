@@ -25,14 +25,15 @@ function do_install() {
 	yaourt -Sy $packages $extra $gpudriver
 }
 
-function do_pkgbuilds() {
-	cd dwm
-	makepkg -fi --skipinteg
 
-	cd ../st
-	makepkg -fi --skipinteg
-}
+# TODO FIXME (shouldn't be run as root...)
+#function do_pkgbuilds() {
+#	cd dwm
+#	makepkg -fi --skipinteg --noconfirm
+#
+#	cd ../st
+#	makepkg -fi --skipinteg --noconfirm
+#}
 
-do_pkgbuilds
 get_driver
 do_install
