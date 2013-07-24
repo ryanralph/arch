@@ -34,6 +34,11 @@ function do_iptables() {
 	chmod 700 /etc/iptables/
 }
 
+function do_ntp() {
+	ntpd -qg
+	hwclock -w
+}
+
 function do_services() {
 	systemctl enable dhcpcd.service
 	systemctl enable iptables.service
@@ -49,5 +54,6 @@ function update_mirrorlist() {
 do_locale
 update_mirrorlist
 do_iptables
+do_ntp
 do_services
 create_nonroot_user
