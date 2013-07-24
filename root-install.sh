@@ -50,6 +50,11 @@ function do_services() {
 	chmod 700 /etc/systemd/
 }
 
+function replace_root_pw() {
+	echo "Changing root password..."
+	passwd root
+}
+
 function update_mirrorlist() {
 	curl "https://www.archlinux.org/mirrorlist/?country=AU" | sed 's/#Server/Server/g' > /etc/pacman.d/mirrorlist
 }
@@ -60,3 +65,5 @@ do_ntp
 do_iptables
 do_services
 create_nonroot_user
+replace_root_pw
+visudo
