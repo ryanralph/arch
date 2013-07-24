@@ -13,11 +13,14 @@ function get_driver() {
 	done
 }
 
-function do_yaourt() {
-	echo "[archlinuxfr]" >> /etc/pacman.conf
-	echo "SigLevel = Never" >> /etc/pacman.conf
-	echo "Server = http://repo.archlinux.fr/\$arch" >> /etc/pacman.conf
+function do_install() {
+	if [ -z $(grep "archlinuxfr" /etc/pacman.conf) ]; then
+		echo "[archlinuxfr]" >> /etc/pacman.conf
+		echo "SigLevel = Never" >> /etc/pacman.conf
+		echo "Server = http://repo.archlinux.fr/\$arch" >> /etc/pacman.conf
 
+		pacman -Sy yaourt
+	fi
 
 	yaourt -Sy $packages $extra $gpudriver
 }
