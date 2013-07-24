@@ -13,6 +13,7 @@ device-mapper
 dhcpcd
 diffutils
 e2fsprogs
+fakeroot
 file
 filesystem
 findutils
