@@ -42,6 +42,7 @@ pacman
 patch
 pciutils
 pcmciautils
+polkit
 pkg-config
 procps-ng
 psmisc
