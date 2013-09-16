@@ -61,6 +61,7 @@ function unmount() {
 	umount /mnt
 }
 
+unmount
 do_partition
 do_formatting
 do_mount
