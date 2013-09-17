@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 device="sda"
 bootsize="100M"

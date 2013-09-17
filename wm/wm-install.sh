@@ -1,3 +1,5 @@
+#!/bin/bash -e
+
 packages="dmenu mesa xorg-server xorg-server-utils xorg-xinit"
 extra=$(cat extra.txt)
 
@@ -24,7 +26,6 @@ function do_install() {
 
 	yaourt -Sy $packages $extra $gpudriver
 }
-
 
 # TODO FIXME (shouldn't be run as root...)
 #function do_pkgbuilds() {
