@@ -58,11 +58,11 @@ function update_mirrorlist() {
 	curl "https://www.archlinux.org/mirrorlist/?country=AU" | sed 's/#Server/Server/g' > /etc/pacman.d/mirrorlist
 }
 
+replace_root_pw
+create_nonroot_user
 do_locale
 update_mirrorlist
 do_ntp
 do_iptables
 do_services
-create_nonroot_user
-replace_root_pw
 visudo
