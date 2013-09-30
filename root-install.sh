@@ -60,9 +60,9 @@ function update_mirrorlist() {
 
 replace_root_pw
 create_nonroot_user
+visudo
 do_locale
 update_mirrorlist
 do_ntp
 do_iptables
 do_services
-visudo
