@@ -2,5 +2,6 @@ chromium
 feh
 git
 imagemagick
+mupdf
 vlc
 xclip 
