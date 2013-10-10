@@ -7,7 +7,7 @@ function get_driver() {
 	echo "Select [initial] graphics driver:"
 	select yn in "Nvidia" "Ati" "Intel" "None"; do
 	      case $yn in
-			Nvidia ) gpudriver=xf86-video-nouveua; break;;
+			Nvidia ) gpudriver=xf86-video-nouveau; break;;
 			Ati ) gpudriver=xf86-video-ati; break;;
 			Intel ) gpudriver=xf86-video-intel; break;;
 			None ) break;;
