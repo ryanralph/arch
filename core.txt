@@ -30,7 +30,6 @@ iputils
 less
 libtool
 linux
-lsof
 make
 man-db
 man-pages
