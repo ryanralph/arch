@@ -1,7 +1,6 @@
 #!/bin/bash -e
 
 hostname="arch"
-
 kbl="us"
 locale="en_AU.UTF-8 UTF-8"
 timezone="/usr/share/zoneinfo/Australia/Melbourne"
@@ -67,6 +66,7 @@ function update_mirrorlist() {
 }
 
 function laptop_install() {
+	yaourt -S wpa_supplicant
 	desktop_install
 	do_powersaving
 }
