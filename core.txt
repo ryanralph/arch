@@ -49,6 +49,7 @@ sudo
 sysfsutils
 syslinux
 systemd-sysvcompat
+tmux
 tree
 util-linux
 vi
