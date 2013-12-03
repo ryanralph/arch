@@ -1,0 +1,57 @@
+Port 22
+AddressFamily any
+ListenAddress 0.0.0.0
+ListenAddress ::
+
+#HostKey /etc/ssh/ssh_host_rsa_key
+#HostKey /etc/ssh/ssh_host_dsa_key
+#HostKey /etc/ssh/ssh_host_ecdsa_key
+KeyRegenerationInterval 1h
+#RekeyLimit default none
+ServerKeyBits 1024
+
+SyslogFacility AUTH
+LogLevel INFO
+
+Protocol 2
+PubkeyAuthentication yes
+AuthorizedKeysFile .ssh/authorized_keys
+
+LoginGraceTime 30
+MaxAuthTries 1
+MaxSessions 1
+
+PermitRootLogin yes # FIXME
+PasswordAuthentication no # combine with `passwd -l [user]`
+PermitEmptyPasswords no
+RSAAuthentication no 
+ChallengeResponseAuthentication no
+UsePAM no 
+
+AllowAgentForwarding no 
+AllowTcpForwarding no 
+GatewayPorts no
+PermitTunnel no
+X11Forwarding no
+
+UseDNS no 
+UseLogin no
+UsePrivilegeSeparation sandbox
+PermitUserEnvironment no
+PrintMotd yes
+PrintLastLog yes
+TCPKeepAlive yes
+StrictModes yes
+
+#Compression delayed
+#ClientAliveInterval 0
+#ClientAliveCountMax 3
+#PidFile /run/sshd.pid
+#MaxStartups 10:30:100
+#ChrootDirectory none
+#VersionAddendum none
+
+RhostsRSAAuthentication no
+HostbasedAuthentication no
+IgnoreUserKnownHosts yes 
+IgnoreRhosts yes 
