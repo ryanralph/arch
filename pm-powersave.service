@@ -1,0 +1,12 @@
+[Unit]
+Description=Powersaving service
+
+[Service]
+Type=oneshot
+ExecStart=/sbin/pm-powersave true
+ExecReload=/sbin/pm-powersave true
+ExecStop=/sbin/pm-powersave false 
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
