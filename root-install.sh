@@ -49,6 +49,14 @@ function do_services() {
 	chmod 700 /etc/systemd/
 }
 
+function do_powersaving() {
+	yaourt -S pm-utils
+      cp pm-powersave.service /etc/systemd/system/
+
+      systemctl enable pm-powersave.service
+      systemctl start pm-powersave.service
+}
+
 function replace_root_pw() {
 	echo "Changing root password..."
 	passwd root
@@ -58,11 +66,18 @@ function update_mirrorlist() {
 	curl "https://www.archlinux.org/mirrorlist/?country=AU" | sed 's/#Server/Server/g' > /etc/pacman.d/mirrorlist
 }
 
-replace_root_pw
-create_nonroot_user
-visudo
-do_locale
-update_mirrorlist
-do_ntp
-do_iptables
-do_services
+function laptop_install() {
+	desktop_install
+	do_powersaving
+}
+
+function desktop_install() {
+	replace_root_pw
+	create_nonroot_user
+	visudo
+	do_locale
+	update_mirrorlist
+	do_ntp
+	do_iptables
+	do_services
+}
