@@ -36,7 +36,6 @@ ntp
 openssh
 p7zip
 pacman
-patch
 pciutils
 pcmciautils
 polkit
@@ -50,8 +49,6 @@ sysfsutils
 syslinux
 systemd-sysvcompat
 tmux
-tree
 util-linux
-vi
 vim
 which
