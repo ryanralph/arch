@@ -1,6 +1,9 @@
 #!/bin/bash -e
 
 function create_nonroot_user() {
+	echo "Changing root password..."
+	passwd root
+
 	echo "Enter non-root username:"
 	read username
 	useradd -m -g users -s /bin/bash $username
@@ -18,16 +21,9 @@ function do_locale() {
 	echo "en_AU.UTF-8 UTF-8" > /etc/locale.gen
 	locale-gen
 	locale > /etc/locale.conf
-}
 
-function do_iptables() {
-	cp iptables.rules /etc/iptables/iptables.rules
-	cp ip6tables.rules /etc/iptables/ip6tables.rules
+	curl -s "https://www.archlinux.org/mirrorlist/?country=AU" | sed 's/#Server/Server/g' > /etc/pacman.d/mirrorlist
 
-	chmod 700 /etc/iptables/
-}
-
-function do_ntp() {
 	ntpd -qg
 	hwclock -w
 }
@@ -37,47 +33,35 @@ function do_services() {
 	systemctl enable iptables.service
 	systemctl enable ip6tables.service
 
+	cp iptables.rules /etc/iptables/iptables.rules
+	cp ip6tables.rules /etc/iptables/ip6tables.rules
+#	cp sshd_config /etc/ssh/sshd_config
+
 	systemctl start iptables.service
 	systemctl start ip6tables.service
+#	systemctl start sshd.service
 
+	chmod 700 /etc/iptables/
 	chmod 700 /etc/systemd/
 }
 
-function do_sshd() {
-	cp sshd_config /etc/ssh/sshd_config
-#	systemctl start sshd.service
-}
-
 function do_powersaving() {
-	yaourt -S pm-utils
+	pacman -Sy pm-utils
       cp pm-powersave.service /etc/systemd/system/
 
       systemctl enable pm-powersave.service
       systemctl start pm-powersave.service
 }
 
-function replace_root_pw() {
-	echo "Changing root password..."
-	passwd root
-}
-
-function update_mirrorlist() {
-	curl "https://www.archlinux.org/mirrorlist/?country=AU" | sed 's/#Server/Server/g' > /etc/pacman.d/mirrorlist
-}
-
 function laptop_install() {
-	yaourt -S wpa_supplicant
+	pacman -Sy wpa_supplicant
 	desktop_install
 	do_powersaving
 }
 
 function desktop_install() {
-	replace_root_pw
 	create_nonroot_user
 	visudo
 	do_locale
-	update_mirrorlist
-	do_ntp
-	do_iptables
 	do_services
 }
