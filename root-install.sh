@@ -1,10 +1,5 @@
 #!/bin/bash -e
 
-hostname="arch"
-kbl="us"
-locale="en_AU.UTF-8 UTF-8"
-timezone="/usr/share/zoneinfo/Australia/Melbourne"
-
 function create_nonroot_user() {
 	echo "Enter non-root username:"
 	read username
@@ -13,14 +8,14 @@ function create_nonroot_user() {
 }
 
 function do_locale() {
-	echo "$hostname" > /etc/hostname
-	ln -s $timezone /etc/localtime
+	echo "arch" > /etc/hostname
+	ln -s /usr/share/zoneinfo/Australia/Melbourne /etc/localtime
 
-	echo "KEYMAP=$kbl" > /etc/vconsole.conf
+	echo "KEYMAP=us" > /etc/vconsole.conf
 	echo "FONT=lat9w-16" >> /etc/vconsole.conf
 	echo "FONT_MAP=8859-1_to_uni" >> /etc/vconsole.conf
 
-	echo $locale > /etc/locale.gen
+	echo "en_AU.UTF-8 UTF-8" > /etc/locale.gen
 	locale-gen
 	locale > /etc/locale.conf
 }
@@ -46,6 +41,11 @@ function do_services() {
 	systemctl start ip6tables.service
 
 	chmod 700 /etc/systemd/
+}
+
+function do_sshd() {
+	cp sshd_config /etc/ssh/sshd_config
+#	systemctl start sshd.service
 }
 
 function do_powersaving() {
