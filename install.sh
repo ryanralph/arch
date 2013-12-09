@@ -46,3 +46,5 @@ EOF
 
 	umount -R /mnt
 }
+
+do_install
