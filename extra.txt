@@ -1,7 +1,12 @@
 chromium
+dmenu
 feh
 git
 imagemagick
+mesa
 mupdf
 vlc
 xclip 
+xorg-server
+xorg-server-utils
+xorg-xinit

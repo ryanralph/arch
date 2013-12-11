@@ -8,8 +8,7 @@ if [ -z $(grep "archlinuxfr" /etc/pacman.conf) ]; then
 	pacman -Sy yaourt
 fi
 
-packages="dmenu mesa xorg-server xorg-server-utils xorg-xinit"
-extra=$(cat extra.txt)
+packages=$(cat extra.txt)
 
 echo "Select [initial] graphics driver:"
 select yn in "Nvidia" "Ati" "Intel" "None"; do
@@ -21,6 +20,6 @@ select yn in "Nvidia" "Ati" "Intel" "None"; do
 	esac
 done
 
-yaourt -Sy $packages $extra $gpudriver
+yaourt -Sy $packages $gpudriver
 
 #makepkg -fi --skipinteg --noconfirm
