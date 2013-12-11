@@ -5,8 +5,8 @@ bash
 binutils
 bzip2
 ca-certificates
-coreutils
 colordiff
+coreutils
 cryptsetup
 curl
 device-mapper
@@ -38,8 +38,8 @@ p7zip
 pacman
 pciutils
 pcmciautils
-polkit
 pkg-config
+polkit
 procps-ng
 psmisc
 sed
