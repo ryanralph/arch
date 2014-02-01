@@ -27,13 +27,16 @@ function do_locale() {
 }
 
 function do_services() {
+	cp ./etc/systemd/journald.conf /etc/systemd/
+
 	systemctl enable dhcpcd.service
 	systemctl enable iptables.service
 	systemctl enable ip6tables.service
 #	systemctl enable ntpd.service
+#	systemctl enable sshd.service
 
 	cp -r ./etc/iptables /etc/iptables
-#	cp sshd_config /etc/ssh/sshd_config
+#	cp ./etc/ssh/* /etc/ssh/
 
 	systemctl start dhcpcd.service
 	systemctl start iptables.service
@@ -47,7 +50,7 @@ function do_services() {
 
 function do_powersaving() {
 	pacman -Sy pm-utils
-      cp pm-powersave.service /etc/systemd/system/
+      cp ./etc/systemd/pm-powersave.service /etc/systemd/system/
 
       systemctl enable pm-powersave.service
       systemctl start pm-powersave.service
