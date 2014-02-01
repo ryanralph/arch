@@ -32,8 +32,7 @@ function do_services() {
 	systemctl enable ip6tables.service
 #	systemctl enable ntpd.service
 
-	cp iptables.rules /etc/iptables/iptables.rules
-	cp ip6tables.rules /etc/iptables/ip6tables.rules
+	cp -r ./etc/iptables /etc/iptables
 #	cp sshd_config /etc/ssh/sshd_config
 
 	systemctl start dhcpcd.service
