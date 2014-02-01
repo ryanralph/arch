@@ -3,10 +3,10 @@ AddressFamily any
 ListenAddress 0.0.0.0
 ListenAddress ::
 
-#HostKey /etc/ssh/ssh_host_rsa_key
-#HostKey /etc/ssh/ssh_host_dsa_key
-#HostKey /etc/ssh/ssh_host_ecdsa_key
-KeyRegenerationInterval 1h
+HostKey /etc/ssh/ssh_host_rsa_key
+HostKey /etc/ssh/ssh_host_dsa_key
+HostKey /etc/ssh/ssh_host_ecdsa_key
+KeyRegenerationInterval 3600
 #RekeyLimit default none
 ServerKeyBits 1024
 
@@ -21,7 +21,7 @@ LoginGraceTime 30
 MaxAuthTries 1
 MaxSessions 1
 
-PermitRootLogin yes # FIXME
+PermitRootLogin without-password
 PasswordAuthentication no # combine with `passwd -l [user]`
 PermitEmptyPasswords no
 RSAAuthentication no 
@@ -55,3 +55,5 @@ RhostsRSAAuthentication no
 HostbasedAuthentication no
 IgnoreUserKnownHosts yes 
 IgnoreRhosts yes 
+
+AcceptEnv LANG LC_*
