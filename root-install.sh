@@ -50,10 +50,10 @@ function do_services() {
 
 function do_powersaving() {
 	pacman -Sy pm-utils
-      cp ./etc/systemd/pm-powersave.service /etc/systemd/system/
+	cp ./etc/systemd/pm-powersave.service /etc/systemd/system/
 
-      systemctl enable pm-powersave.service
-      systemctl start pm-powersave.service
+	systemctl enable pm-powersave.service
+	systemctl start pm-powersave.service
 }
 
 function laptop_install() {
