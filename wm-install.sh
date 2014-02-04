@@ -22,4 +22,5 @@ done
 
 yaourt -Sy $packages $gpudriver
 
-#makepkg -fi --skipinteg --noconfirm
+#makepkg --force --install --skipinteg
+#makepkg -fi --skipinteg
