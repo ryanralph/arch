@@ -27,7 +27,7 @@ function do_locale() {
 }
 
 function do_services() {
-	cp ./etc/systemd/journald.conf /etc/systemd/
+	cp _etc/systemd/journald.conf /etc/systemd/
 
 	systemctl enable dhcpcd.service
 	systemctl enable iptables.service
@@ -35,8 +35,8 @@ function do_services() {
 #	systemctl enable ntpd.service
 #	systemctl enable sshd.service
 
-	cp -r ./etc/iptables /etc/iptables
-#	cp ./etc/ssh/* /etc/ssh/
+	cp -r _etc/iptables /etc
+#	cp _etc/ssh/* /etc
 
 	systemctl start dhcpcd.service
 	systemctl start iptables.service
