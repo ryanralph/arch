@@ -44,6 +44,8 @@ function do_services() {
 #	systemctl start ntpd.service
 #	systemctl start sshd.service
 
+	systemctl disable remote-fs.target
+
 	chmod 700 /etc/iptables/
 	chmod 700 /etc/systemd/
 }
