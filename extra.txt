@@ -1,5 +1,4 @@
 chromium
-dmenu
 feh
 git
 imagemagick

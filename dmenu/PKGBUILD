@@ -1,0 +1,27 @@
+pkgname=dmenu
+pkgver=4.5
+pkgrel=1
+pkgdesc='dynamic menu for X'
+
+arch=('i686' 'x86_64')
+depends=('libx11' 'libxinerama')
+license=('MIT')
+options=(zipman)
+source=(http://git.suckless.org/dmenu/snapshot/dmenu-master.zip)
+
+build() {
+	cd $srcdir/dmenu-master
+	sed -i 's/CPPFLAGS =/CPPFLAGS +=/g' config.mk
+	sed -i 's/^CFLAGS = -g/#CFLAGS += -g/g' config.mk
+	sed -i 's/^#CFLAGS = -std/CFLAGS += -std/g' config.mk
+	sed -i 's/^LDFLAGS = -g/#LDFLAGS += -g/g' config.mk
+	sed -i 's/^#LDFLAGS = -s/LDFLAGS += -s/g' config.mk
+	make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
+}
+
+package() {
+	cd $srcdir/dmenu-master
+	make PREFIX=/usr DESTDIR=$pkgdir install
+	install -m644 -D LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+	install -m644 -D README $pkgdir/usr/share/doc/$pkgname/README
+}
