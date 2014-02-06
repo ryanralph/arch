@@ -1,6 +1,6 @@
 pkgname=dmenu
 pkgver=4.5
-pkgrel=1
+pkgrel=99
 pkgdesc='dynamic menu for X'
 
 arch=('i686' 'x86_64')
