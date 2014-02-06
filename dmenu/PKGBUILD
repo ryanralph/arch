@@ -25,3 +25,4 @@ package() {
 	install -m644 -D LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 	install -m644 -D README $pkgdir/usr/share/doc/$pkgname/README
 }
+md5sums=('99d01ff7d58b5a730f12ab6995ee9fbd')
