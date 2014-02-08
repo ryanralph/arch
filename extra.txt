@@ -1,6 +1,7 @@
 chromium
 feh
 git
+gpgme
 imagemagick
 mesa
 mupdf
