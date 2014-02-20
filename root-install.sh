@@ -30,18 +30,19 @@ function do_services() {
 	cp _etc/systemd/journald.conf /etc/systemd/
 
 	systemctl enable dhcpcd.service
-	systemctl enable iptables.service
-	systemctl enable ip6tables.service
-#	systemctl enable ntpd.service
-#	systemctl enable sshd.service
+	systemctl start dhcpcd.service
 
 	cp -r _etc/iptables /etc
-#	cp _etc/ssh/* /etc
-
-	systemctl start dhcpcd.service
+	systemctl enable iptables.service
+	systemctl enable ip6tables.service
 	systemctl start iptables.service
 	systemctl start ip6tables.service
+
+#	systemctl enable ntpd.service
 #	systemctl start ntpd.service
+
+#	cp _etc/ssh/* /etc/ssh
+#	systemctl enable sshd.service
 #	systemctl start sshd.service
 
 	systemctl disable remote-fs.target
@@ -52,7 +53,7 @@ function do_services() {
 
 function do_powersaving() {
 	pacman -Sy pm-utils
-	cp ./etc/systemd/pm-powersave.service /etc/systemd/system/
+	cp _etc/systemd/pm-powersave.service /etc/systemd/system/
 
 	systemctl enable pm-powersave.service
 	systemctl start pm-powersave.service
