@@ -27,7 +27,7 @@ function do_locale() {
 }
 
 function do_services() {
-	cp _etc/systemd/journald.conf /etc/systemd/
+	cp _etc/systemd/* etc/systemd/
 
 	systemctl enable dhcpcd.service
 	systemctl start dhcpcd.service
@@ -53,7 +53,7 @@ function do_services() {
 
 function do_powersaving() {
 	pacman -Sy pm-utils
-	cp _etc/systemd/pm-powersave.service /etc/systemd/system/
+	cp _etc/systemd/system/pm-powersave.service /etc/systemd/system/
 
 	systemctl enable pm-powersave.service
 	systemctl start pm-powersave.service
