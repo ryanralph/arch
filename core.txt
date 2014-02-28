@@ -32,6 +32,7 @@ linux
 make
 man-db
 man-pages
+nmap
 ntp
 openssh
 p7zip
