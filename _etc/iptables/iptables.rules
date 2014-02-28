@@ -4,8 +4,8 @@
 :OUTPUT ACCEPT [1:60]
 :POSTROUTING ACCEPT [1:60]
 
-#-A PREROUTING -p tcp --dport 22 -j REDIRECT --to-port 1020
-#-A PREROUTING -p tcp --dport 1020 -j REDIRECT --to-port 22
+#-A PREROUTING -p tcp --dport 22 -j REDIRECT --to-port 1022
+#-A PREROUTING -p tcp --dport 1022 -j REDIRECT --to-port 22
 
 COMMIT
 
