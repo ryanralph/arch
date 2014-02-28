@@ -8,8 +8,7 @@ rootfs="ext4"
 
 packages=$(cat core.txt)
 
-function do_install() {
-	fdisk /dev/$device << EOF
+fdisk /dev/$device << EOF
 d
 1
 d
@@ -31,20 +30,17 @@ p
 w
 EOF
 
-	mkfs -t "$bootfs" /dev/"$device"1
-	mkfs -t "$rootfs" /dev/"$device"2
-	mount /dev/"$device"2 /mnt
+mkfs -t "$bootfs" /dev/"$device"1
+mkfs -t "$rootfs" /dev/"$device"2
+mount /dev/"$device"2 /mnt
 
-	mkdir /mnt/boot
-	mount /dev/"$device"1 /mnt/boot
+mkdir /mnt/boot
+mount /dev/"$device"1 /mnt/boot
 
-	pacstrap /mnt $packages
-	genfstab -p /mnt >> /mnt/etc/fstab
+pacstrap /mnt $packages
+genfstab -p /mnt >> /mnt/etc/fstab
 
-	syslinux-install_update -c /mnt -i -a -m
-	sed -i "s/sda3/"$device"2/g" /mnt/boot/syslinux/syslinux.cfg
+syslinux-install_update -c /mnt -i -a -m
+sed -i "s/sda3/"$device"2/g" /mnt/boot/syslinux/syslinux.cfg
 
-	umount -R /mnt
-}
-
-do_install
+umount -R /mnt
