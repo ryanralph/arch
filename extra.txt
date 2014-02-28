@@ -4,7 +4,6 @@ feh
 git
 gpgme
 imagemagick
-mesa
 mupdf
 vlc
 xclip 
