@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 depends=('libx11' 'libxinerama')
 license=('MIT')
 options=(zipman)
-source=(https://github.com/RommelVR/dwm/archive/master.zip dwm.desktop)
+source=(https://github.com/Dcousens/dwm/archive/master.zip dwm.desktop)
 
 build() {
 	cp $srcdir/dwm.desktop $srcdir/dwm-master
