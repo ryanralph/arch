@@ -29,6 +29,7 @@ function do_locale() {
 function do_services() {
 	cp _etc/systemd/* etc/systemd/
 
+	echo "deny bootp" >> /etc/dhcpcd.conf
 	systemctl enable dhcpcd.service
 	systemctl start dhcpcd.service
 
