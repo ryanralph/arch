@@ -7,10 +7,9 @@ rootfs="ext4"
 
 packages=`cat core.txt`
 
+echo "Remove all partitions on $device..."
+fdisk /dev/$device
 fdisk /dev/$device << EOF
-d
-
-d
 n
 p
 1
