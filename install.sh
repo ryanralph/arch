@@ -31,15 +31,15 @@ EOF
 
 mkfs -t "$bootfs" /dev/"$device"1
 mkfs -t "$rootfs" /dev/"$device"2
-mount /dev/"$device"2 /mnt
+mount /dev/"$device"2 /foo
 
-mkdir /mnt/boot
-mount /dev/"$device"1 /mnt/boot
+mkdir /foo/boot
+mount /dev/"$device"1 /foo/boot
 
-pacstrap /mnt $packages
-genfstab -p /mnt >> /mnt/etc/fstab
+pacstrap /foo $packages
+genfstab -p /foo >> /foo/etc/fstab
 
-syslinux-install_update -c /mnt -i -a -m
-sed -i "s/sda3/"$device"2/g" /mnt/boot/syslinux/syslinux.cfg
+syslinux-install_update -c /foo -i -a -m
+sed -i "s/sda3/"$device"2/g" /foo/boot/syslinux/syslinux.cfg
 
-umount -R /mnt
+umount -R /foo
