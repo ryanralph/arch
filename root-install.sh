@@ -71,7 +71,7 @@ function laptop_install() {
 
 function desktop_install() {
 	create_nonroot_user
-	visudo
+	EDITOR=vim visudo
 	do_locale
 	do_services
 }
