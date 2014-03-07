@@ -12,7 +12,7 @@ function create_nonroot_user() {
 
 function do_locale() {
 	echo "arch" > /etc/hostname
-	ln -s /usr/share/zoneinfo/Australia/Melbourne /etc/localtime
+	ln -sf /usr/share/zoneinfo/Australia/Melbourne /etc/localtime
 
 	cat _etc/vconsole.conf > /etc/vconsole.conf
 
