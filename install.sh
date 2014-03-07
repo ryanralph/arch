@@ -2,11 +2,10 @@
 
 device="sda"
 bootsize="100M"
-
 bootfs="ext2"
 rootfs="ext4"
 
-packages=$(cat core.txt)
+packages=`cat core.txt`
 
 fdisk /dev/$device << EOF
 d
