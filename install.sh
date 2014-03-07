@@ -27,6 +27,8 @@ EOF
 
 mkfs -t "$bootfs" /dev/"$device"1
 mkfs -t "$rootfs" /dev/"$device"2
+
+mkdir /foo
 mount /dev/"$device"2 /foo
 
 mkdir /foo/boot
