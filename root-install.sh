@@ -48,8 +48,8 @@ function do_services() {
 
 	systemctl disable remote-fs.target
 
-	chmod 700 /etc/iptables/
-	chmod 700 /etc/systemd/
+	chmod 600 /etc/iptables/
+	chmod 600 /etc/systemd/
 }
 
 function do_powersaving() {
@@ -62,6 +62,9 @@ function do_powersaving() {
 
 function laptop_install() {
 	pacman -Sy wpa_supplicant
+	touch /etc/wpa_supplicant.conf
+	chmod 600 /etc/wpa_supplicant.conf
+
 	desktop_install
 	do_powersaving
 }
