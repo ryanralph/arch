@@ -1,10 +1,10 @@
 chromium
+chromium-libpdf
 dmenu
 feh
 git
 gpgme
 imagemagick
-mupdf
 vlc
 xclip 
 xorg-server
