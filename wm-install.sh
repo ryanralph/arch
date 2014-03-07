@@ -5,7 +5,7 @@ if [ -z $(grep "archlinuxfr" /etc/pacman.conf) ]; then
 	echo "SigLevel = Never" >> /etc/pacman.conf
 	echo "Server = http://repo.archlinux.fr/\$arch" >> /etc/pacman.conf
 
-	pacman -Sy yaourt
+	sudo pacman -Sy yaourt
 fi
 
 packages=`cat extra.txt`
