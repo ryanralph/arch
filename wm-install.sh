@@ -13,7 +13,7 @@ packages=`cat extra.txt`
 echo "Select [initial] graphics driver:"
 select yn in "Nvidia" "Ati" "Intel" "None"; do
 	case $yn in
-		Nvidia ) gpudriver=xf86-video-nouveau; break;;
+		Nvidia ) gpudriver=nvidia; break;;
 		Ati ) gpudriver=xf86-video-ati; break;;
 		Intel ) gpudriver=xf86-video-intel; break;;
 		None ) break;;
