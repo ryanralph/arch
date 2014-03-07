@@ -9,9 +9,7 @@ packages=`cat core.txt`
 
 fdisk /dev/$device << EOF
 d
-1
-d
-2
+
 d
 n
 p
@@ -19,7 +17,6 @@ p
 
 +$bootsize
 a
-1
 n
 p
 2
