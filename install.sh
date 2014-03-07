@@ -28,10 +28,10 @@ EOF
 mkfs -t "$bootfs" /dev/"$device"1
 mkfs -t "$rootfs" /dev/"$device"2
 
-mkdir /foo
+mkdir -p /foo
 mount /dev/"$device"2 /foo
 
-mkdir /foo/boot
+mkdir -p /foo/boot
 mount /dev/"$device"1 /foo/boot
 
 pacstrap /foo $packages
