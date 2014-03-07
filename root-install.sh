@@ -14,7 +14,7 @@ function do_locale() {
 	echo "arch" > /etc/hostname
 	ln -s /usr/share/zoneinfo/Australia/Melbourne /etc/localtime
 
-	cat ./etc/vconsole.conf > /etc/vconsole.conf
+	cat _etc/vconsole.conf > /etc/vconsole.conf
 
 	echo "en_AU.UTF-8 UTF-8" > /etc/locale.gen
 	locale-gen
