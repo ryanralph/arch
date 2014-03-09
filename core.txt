@@ -34,6 +34,7 @@ man-db
 man-pages
 nmap
 ntp
+ntfs-3g
 openssh
 p7zip
 pacman
